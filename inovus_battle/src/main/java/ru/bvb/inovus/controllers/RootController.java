@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Queue;
 
 @Controller
-@RequestMapping("/")
+
 public class RootController {
 
     @Autowired
@@ -29,8 +29,23 @@ public class RootController {
     @Autowired
     private CatService catService;
 
-    @GetMapping
+    @GetMapping("/")
     public String getRoot(Model model) {
+        if (battles.size() == 0) {
+            reset(catService, battles);
+        }
+
+        model.addAttribute("name", "baddie");
+        return "index";
+    }
+
+    @GetMapping("/reset")
+    public String reset() {
+        reset(catService, battles);
+        return "redirect:/";
+    }
+
+    public static void reset(CatService catService, Queue<Battle> battles) {
         List<Cat> cats = catService.getCats();
         Collections.shuffle(cats);
         battles.clear();
@@ -40,7 +55,5 @@ public class RootController {
                     .cat2(cats.get(i))
                     .build());
         }
-        model.addAttribute("name", "baddie");
-        return "index";
     }
 }

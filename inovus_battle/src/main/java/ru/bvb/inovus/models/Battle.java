@@ -9,7 +9,6 @@ import java.io.Serializable;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
 @Builder
 public class Battle implements Serializable {
     Cat cat1;

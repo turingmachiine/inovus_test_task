@@ -26,6 +26,7 @@ public class NumberController {
     @ResponseBody
     String random() {
         carNumber = numberService.random();
+
         return carNumber.toString();
     }
 }

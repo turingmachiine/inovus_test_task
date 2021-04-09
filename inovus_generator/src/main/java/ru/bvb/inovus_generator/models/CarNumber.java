@@ -5,23 +5,34 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Entity
 public class CarNumber {
-    Letter first;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
+
+    Character first;
 
     Integer num;
 
-    Letter second;
-    Letter third;
+    Character second;
+    Character third;
 
     @Override
     public String toString() {
         String output = "";
 
-        output = output + first.getLetter();
+        output = output + first;
         if (num < 100) {
             if (num < 10) {
                 output = output + "00" + num;
@@ -31,7 +42,7 @@ public class CarNumber {
         } else {
             output = output + num;
         }
-        output = output + second.getLetter() + third.getLetter() + " 116 RUS";
+        output = output + second + third + " 116 RUS";
         return output;
     }
 }

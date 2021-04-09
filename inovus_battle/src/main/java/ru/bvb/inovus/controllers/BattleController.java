@@ -22,10 +22,14 @@ public class BattleController {
     @ResponseBody
     Battle process(@RequestParam("ind") String ind) {
         if (!ind.equals("START")) {
-            Cat cat = new Cat();
-            catService.incrementScore(Long.parseLong(ind));
+            Battle battle = battles.peek();
+            if (battle.getCat1().getId().equals(Long.parseLong(ind)) ||
+                    battle.getCat2().getId().equals(Long.parseLong(ind))) {
+                catService.incrementScore(Long.parseLong(ind));
+                battles.poll();
+            }
         }
-        return battles.poll();
+        return battles.peek();
 
     }
 }

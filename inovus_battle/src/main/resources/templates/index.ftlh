@@ -14,7 +14,7 @@
     <div id="res">
         <form action="#" id="head">
             do you wanna start the cat battle?
-            <a id="query" onclick="f()" href="#">START</a>
+            <a id="query" onclick="f()" href="#">VOTE</a>
             <input value="START" type="hidden" id="ind">
         </form>
         <table>
@@ -34,6 +34,7 @@
             </tr>
         </table>
     </div>
+    <a href="/reset">RESET</a>
 
 
 </div>

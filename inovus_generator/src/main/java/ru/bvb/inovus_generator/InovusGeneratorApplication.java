@@ -7,7 +7,6 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.web.context.WebApplicationContext;
 import ru.bvb.inovus_generator.models.CarNumber;
-import ru.bvb.inovus_generator.models.Letter;
 
 import java.util.Random;
 
@@ -23,8 +22,6 @@ public class InovusGeneratorApplication {
     }
 
     public static void main(String[] args) {
-
-
         SpringApplication.run(InovusGeneratorApplication.class, args);
     }
 
